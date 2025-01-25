@@ -13,7 +13,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     hass.data[DOMAIN][entry.entry_id] = entry.data
 
     # Start the ICA shopping list integration
-    from .ica_shopping_list import ICAShoppingListAPI, ICAShoppingListIntegration
+    from .ica_shopping_sync import ICAShoppingListAPI, ICAShoppingListIntegration
 
     api_client = ICAShoppingListAPI(
         username=entry.data["username"], password=entry.data["password"]

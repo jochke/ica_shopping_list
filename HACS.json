@@ -1,7 +1,7 @@
 {
   "name": "ICA Shopping List",
   "description": "Sync ICA shopping lists with Home Assistant",
-  "domains": ["ica_shopping_list"],
+  "domains": ["ica_shopping_sync"],
   "country": ["se"],
   "iot_class": "cloud_polling"
 }

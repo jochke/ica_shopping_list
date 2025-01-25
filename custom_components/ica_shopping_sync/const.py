@@ -1,0 +1,1 @@
+DOMAIN = "ica_shopping_sync"
