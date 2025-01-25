@@ -1,7 +1,10 @@
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
+import logging
 
 from .const import DOMAIN
+
+_LOGGER = logging.getLogger(__name__)
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the ICA integration using YAML (not used)."""
@@ -18,7 +21,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
     api_client = ICAShoppingListAPI(
         username=entry.data["username"], password=entry.data["password"]
     )
-    await api_client.login()
+    try:
+        await api_client.login()
+    except Exception as e:
+        _LOGGER.error(f"Failed to authenticate with the ICA API: {e}")
+        return False
 
     ica_integration = ICAShoppingListIntegration(hass, api_client)
     await ica_integration.initialize()
@@ -27,5 +34,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry):
 
 async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry):
     """Unload an ICA config entry."""
-    hass.data[DOMAIN].pop(entry.entry_id)
-    return True
+    unload_successful = await hass.config_entries.async_unload_platforms(entry, [])
+    if unload_successful:
+        hass.data[DOMAIN].pop(entry.entry_id)
+    return unload_successful
