@@ -1,9 +1,10 @@
 {
   "domain": "ica_shopping_sync",
   "name": "ICA Shopping Sync",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "documentation": "https://github.com/jochke/ica_shopping_list",
   "requirements": ["aiohttp"],
   "dependencies": [],
-  "codeowners": ["@jochke"]
+  "codeowners": ["@jochke"],
+  "config_flow": true
 }
