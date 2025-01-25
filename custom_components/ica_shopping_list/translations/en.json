@@ -1,0 +1,24 @@
+{
+  "config": {
+    "title": "ICA Shopping List",
+    "description": "Sync your ICA shopping lists with Home Assistant.",
+    "step": {
+      "user": {
+        "title": "Connect to ICA",
+        "description": "Enter your ICA account credentials to set up the integration.",
+        "data": {
+          "username": "Username",
+          "password": "Password"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Invalid username or password.",
+      "unknown": "An unknown error occurred."
+    },
+    "abort": {
+      "already_configured": "This account is already configured."
+    }
+  }
+}
+
