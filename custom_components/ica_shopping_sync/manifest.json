@@ -6,5 +6,6 @@
   "requirements": ["aiohttp"],
   "dependencies": [],
   "codeowners": ["@jochke"],
-  "config_flow": true
+  "config_flow": true,
+  "icon": "custom_components/ica_shopping_list/icon.svg"
 }
